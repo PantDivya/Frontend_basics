@@ -13,27 +13,53 @@
                     <h4 class="mt-1 mb-5 pb-1">Sign up Here!!!</h4>
                   </div>
   
-                  <form >
+                  <form [formGroup]="signup" (ngSubmit)="OnSubmit()">
                     <div class="form-outline mb-4 form-group">
                         <label class="form-label" for="username">Username</label>
-                        <input type="text" class="form-control" id="text" formControlName="username"
-                        placeholder="Enter your username.."/>
+                        <input type="text" class="form-control" id="username" formControlName="username"
+                        placeholder="Enter your username.."
+                        [ngClass]="{'is-invalid': submitted && f['username'].errors}" />
+                        <!-- Error messages -->
+                        <div class="invalid-feedback" *ngIf="submitted && f['username'].errors">
+                            <div *ngIf="f['username'].errors['required']"><small class="text-danger">
+                                *username is required.</small></div>
+                         </div>     
+                                             
                     </div>
                     <div class="form-outline mb-4 form-group">
                         <label class="form-label" for="email">Email</label>
                         <input type="email" class="form-control" id="email" formControlName="email"
-                        placeholder="Enter your email.."/>
+                        placeholder="Enter your email.."
+                        [ngClass]="{'is-invalid' : submitted && f['email'].errors}" /> 
+                      <!-- error messsage -->
+                      <div *ngIf="submitted && f['email'].errors">
+                        <div *ngIf="f['email'].errors['required']"><small class="text-danger">
+                          *email required</small></div>
+                      </div>
+
                     </div>
                     <div class="form-outline mb-4 form-group">
                         <label class="form-label" for="phone">Phone No.</label>
                         <input type="text" class="form-control" id="phone" formControlName="phone"
-                        placeholder="Enter your phone no.."/>
+                        placeholder="Enter your phone no.."
+                        [ngClass]="{'is-invalid' : submitted && f['phone'].errors}" />
+                        <!-- error message -->
+                        <div class="invalid-feedback" *ngIf="submitted && f['phone'].errors">
+                          <div *ngIf="f['phone'].errors['required']"><small class="text-danger">
+                            *phone no. is required</small></div>
+                          <div *ngIf="f['phone'].errors['pattern']">*phone no. should be 10 digits</div>  
+                        </div>
                     </div>
                     <div class="form-outline mb-4 form-group">
                         <label class="form-label" for="password">Password</label>
                         <input type="password" class="form-control" id="password" formControlName="password"
-                        placeholder="Enter your password.." />
-                        
+                        placeholder="Enter your password.." 
+                        [ngClass]="{'is-invalid' : submitted && f['password'].errors}" />
+                        <!-- error messgaes -->
+                        <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
+                          <div *ngIf="f['password'].errors['required']"><small class="text-danger">
+                            *password is required</small></div>
+                        </div>
                     </div>
 
                     

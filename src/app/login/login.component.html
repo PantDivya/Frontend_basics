@@ -40,10 +40,8 @@
                         <div class="invalid-feedback" *ngIf="submitted && f['password'].errors">
                             <div *ngIf="f['password'].errors['required']"><small class="text-danger">
                                 *Password required</small></div>
-                            <div *ngIf="f['password'].errors['minlength']"><small class="text-danger">
-                                *Password should be at least 8 character</small></div>
                             <div *ngIf="f['password'].errors['pattern']"><small class="text-danger">
-                                *Password should contain at least 1 capital letter and 1 special character</small></div>
+                                *Password should contain at least 8 character, 1 capital letter and 1 special character</small></div>
 
                         </div>
                     </div>

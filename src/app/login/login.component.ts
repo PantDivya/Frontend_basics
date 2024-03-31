@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.login = this.formBuilder.group({
       email : ['',[Validators.required, Validators.email,Validators.pattern(/^[\w-]+@([\w-]+\.)*[a-zA-Z]{2,7}$/)]],
-      password : ['', [Validators.required, Validators.minLength(8),Validators.pattern(/^(?=.*[A-Z])(?=.*[@$!%*?&][A-Za-z\d@$!%*?&])$/)]],
+      password : ['', [Validators.required,Validators.pattern(/^(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/)]],
     });
 
   }
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   OnSubmit() : void{
     this.submitted = true;
     if(this.login.invalid){
-      return console.log("log in successful");
+      return console.log("Login not successful");
     }
   }
 
